@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Autodesk.PlatformServices</RootNamespace>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>AutodeskPlatformServices.Core</Title>
+    <AssemblyVersion>0.1.0</AssemblyVersion>
+    <Version>0.1.0</Version>
+    <Authors>AllanMoraes</Authors>
+    <Description>A strong typed SDK for Autodesk Platform Services</Description>
+    <PackageIcon>adsklogo.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>autodesk;aps;autodeskplatformservices;adsk</PackageTags>
+    <PackageReleaseNotes>Model Derivative is still a WIP, shouldn't be used yet</PackageReleaseNotes>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Copyright>Copyright (c) 2023 Allan Moraes</Copyright>
+    <RepositoryUrl>https://github.com/allmomoro088/Autodesk-Platform-Services-Net-Sdk</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageId>AutodeskPlatformServices.Core</PackageId>
+    <Product>AutodeskPlatformServices.Core</Product>
+    <PackageProjectUrl>AutodeskPlatformServices.Core</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="C:\Users\Allan Moraes\Desktop\adsklogo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.30" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="RestSharp" Version="108.0.3" />
+  </ItemGroup>
+
+</Project>
