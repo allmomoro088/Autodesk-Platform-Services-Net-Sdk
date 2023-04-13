@@ -27,10 +27,9 @@ namespace Autodesk.PlatformServices.DM
         /// <summary>
         /// Creates an instance of <see cref="HubsApi"/>. Mainly used by Dependency Injection
         /// </summary>
-        /// <param name="cc">Client Credentials used to authenticate</param>
         /// <param name="dmClient">The DMClient to be used on executing requests</param>
         /// <param name="requestBuilder">The DM request builder to be used</param>
-        public HubsApi(ClientCredentials cc, DMClient dmClient, DMRequestBuilder requestBuilder)
+        public HubsApi(DMClient dmClient, DMRequestBuilder requestBuilder)
         {
             Client = dmClient;
             _requestBuilder = requestBuilder;

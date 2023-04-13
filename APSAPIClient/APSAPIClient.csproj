@@ -8,14 +8,19 @@
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>AutodeskPlatformServices.Core</Title>
-    <AssemblyVersion>0.1.0</AssemblyVersion>
-    <Version>0.1.0</Version>
+    <AssemblyVersion>0.1.1</AssemblyVersion>
+    <Version>0.1.1</Version>
     <Authors>AllanMoraes</Authors>
-    <Description>A strong typed SDK for Autodesk Platform Services</Description>
+    <Description>A strong typed SDK for Autodesk Platform Services
+Use major Autodesk Platform Services Data Management API endpoints with this package
+
+Model Derivative and BIM360 to be released soon.</Description>
     <PackageIcon>adsklogo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>autodesk;aps;autodeskplatformservices;adsk</PackageTags>
-    <PackageReleaseNotes>Model Derivative is still a WIP, shouldn't be used yet</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed constructors for Dependency Injection taht where requiring unused parameters
+
+Model Derivative and BIM360 are still a WIP, shouldn't be used yet</PackageReleaseNotes>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -26,6 +31,7 @@
     <PackageId>AutodeskPlatformServices.Core</PackageId>
     <Product>AutodeskPlatformServices.Core</Product>
     <PackageProjectUrl>AutodeskPlatformServices.Core</PackageProjectUrl>
+    <AssemblyName>AutodeskPlatformServices.Core</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

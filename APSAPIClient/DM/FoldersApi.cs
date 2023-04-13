@@ -32,12 +32,10 @@ namespace Autodesk.PlatformServices.DM
         /// <summary>
         /// Creates an instance of <see cref="FoldersApi"/>. Mainly used by Dependency Injection
         /// </summary>
-        /// <param name="cc">Client Credentials used to authenticate</param>
         /// <param name="dmClient">The DMClient to be used on executing requests</param>
         /// <param name="requestBuilder">The request builder instance</param>
         /// <param name="dataBuilder">The data builder instance</param>
-        public FoldersApi(ClientCredentials cc,
-                          DMClient dmClient,
+        public FoldersApi(DMClient dmClient,
                           DMRequestBuilder requestBuilder,
                           DMDataBuilder dataBuilder)
         {

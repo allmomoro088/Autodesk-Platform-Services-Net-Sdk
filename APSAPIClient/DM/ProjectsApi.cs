@@ -16,32 +16,27 @@ namespace Autodesk.PlatformServices.DM
     {
         DMRequestBuilder _requestBuilder;
         DMDataBuilder _dataBuilder;
-        string _accountId;
 
         /// <summary>
         /// Creates an instance of <see cref="ProjectsApi"/>
         /// </summary>
         /// <param name="cc">Client Credentials used to authenticate</param>
-        /// <param name="accountId">The account id to be used</param>
-        public ProjectsApi(ClientCredentials cc, string accountId) : base(cc, new DataManagementScope())
+        public ProjectsApi(ClientCredentials cc) : base(cc, new DataManagementScope())
         {
             Client = new DMClient(Authenticator);
             _requestBuilder = new DMRequestBuilder();
             _dataBuilder = new DMDataBuilder();
-            _accountId = accountId;
         }
 
         /// <summary>
         /// Creates an instance of <see cref="ProjectsApi"/>. Mainly used by Dependency Injection
         /// </summary>
-        /// <param name="cc">Client Credentials used to authenticate</param>
         /// <param name="dmClient">The DMClient instance used to execute requests</param>
         /// <param name="requestBuilder">The DM Request Builder instance</param>
         /// <param name="dataBuilder">The DM Data Builder instance</param>
-        public ProjectsApi(ClientCredentials cc,
-                           DMClient dmClient,
+        public ProjectsApi(DMClient dmClient,
                            DMRequestBuilder requestBuilder,
-                           DMDataBuilder dataBuilder) : base (cc, new DataManagementScope())
+                           DMDataBuilder dataBuilder)
         {
             Client = dmClient;
             _requestBuilder = requestBuilder;
@@ -53,10 +48,10 @@ namespace Autodesk.PlatformServices.DM
         /// </summary>
         /// <param name="accountId">The account id to be used</param>
         /// <returns>A list of <see cref="Project"/> on that account</returns>
-        public IEnumerable<Project> GetProjects(string accountId = null)
+        public IEnumerable<Project> GetProjects(string accountId)
         {
             var r = _requestBuilder
-                .UseGetProjects(_accountId ?? accountId)
+                .UseGetProjects(accountId)
                 .Build();
 
             return Client.ExecutePaginated<List<Project>, Project>(r);
@@ -68,10 +63,10 @@ namespace Autodesk.PlatformServices.DM
         /// <param name="projectId">The project id</param>
         /// <param name="accountId">The account id or hub id where the project is located</param>
         /// <returns></returns>
-        public Project GetProject(string projectId, string accountId = null)
+        public Project GetProject(string projectId, string accountId)
         {
             var r = _requestBuilder
-                .UseGetProject(accountId ?? _accountId, projectId)
+                .UseGetProject(accountId, projectId)
                 .Build();
 
             return Client.ExecuteDMApi<Project>(r);

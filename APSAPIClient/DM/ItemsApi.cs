@@ -34,7 +34,7 @@ namespace Autodesk.PlatformServices.DM
         /// <param name="client">The DM Client to be used on executing requests</param>
         /// <param name="requestBuilder"></param>
         /// <param name="dataBuilder"></param>
-        public ItemsApi(ClientCredentials cc, DMClient client, DMRequestBuilder requestBuilder, DMDataBuilder dataBuilder) : base(cc, new DataManagementScope())
+        public ItemsApi(DMClient client, DMRequestBuilder requestBuilder, DMDataBuilder dataBuilder)
         {
             Client = client;
             _requestBuilder = requestBuilder;
