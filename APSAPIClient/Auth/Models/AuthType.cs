@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Autodesk.PlatformServices.Auth
 {
-    internal enum AuthType
+    public enum AuthType
     {
         Code,
         RefreshToken

@@ -11,7 +11,7 @@ namespace Autodesk.PlatformServices.Auth
     /// <summary>
     /// A abstraction class for generating the requests used for Authentication API
     /// </summary>
-    internal class AuthRequestBuilder : RequestBuilderBase
+    public class AuthRequestBuilder : RequestBuilderBase
     {
         private string _clientId;
         private string _clientSecret;
@@ -23,7 +23,7 @@ namespace Autodesk.PlatformServices.Auth
         /// <param name="clientId">Client Id of the APS app. Obtained at https://aps.autodesk.com/myapps/</param>
         /// <param name="clientSecret">Client Secret of the APS app. Obtained at https://aps.autodesk.com/myapps/</param>
         /// <returns>This <see cref="AuthRequestBuilder"/> instance</returns>
-        internal AuthRequestBuilder WithClientCredentials(string clientId, string clientSecret)
+        public AuthRequestBuilder WithClientCredentials(string clientId, string clientSecret)
         {
             _clientId = clientId;
             _clientSecret = clientSecret;
@@ -35,13 +35,12 @@ namespace Autodesk.PlatformServices.Auth
         /// <para>Cannot be used together with UseThreeLegged</para>
         /// </summary>
         /// <returns>This <see cref="AuthRequestBuilder"/> instance</returns>
-        internal AuthRequestBuilder UseTwoLegged()
+        public AuthRequestBuilder UseTwoLegged()
         {
-            Resource = "authentication/v1/authenticate";
+            Resource = "authentication/v2/token";
             Method = Method.Post;
             Headers.Add("Content-Type", "application/x-www-form-urlencoded");
-            Parameters.Add(("client_id", _clientId, null));
-            Parameters.Add(("client_secret", _clientSecret, null));
+            Headers.Add("Authorization", $"Basic {GetEncodedClientIdAndClientSecret()}");
             Parameters.Add(("grant_type", "client_credentials", null));
             return this;
         }
@@ -51,7 +50,7 @@ namespace Autodesk.PlatformServices.Auth
         /// </summary>
         /// <param name="scope">Token scope</param>
         /// <returns>This <see cref="AuthRequestBuilder"/> instance</returns>
-        internal AuthRequestBuilder SetScope(Scope scope)
+        public AuthRequestBuilder SetScope(Scope scope)
         {
             Parameters.Add(("scope", scope.Stringfy(), ParameterType.QueryString));
             return this;
@@ -62,7 +61,7 @@ namespace Autodesk.PlatformServices.Auth
         /// </summary>
         /// <param name="redirect_uri">The Redirect or Callback Uri used</param>
         /// <returns>This <see cref="AuthRequestBuilder"/> instance</returns>
-        internal AuthRequestBuilder SetRedirectUri(string redirect_uri)
+        public AuthRequestBuilder SetRedirectUri(string redirect_uri)
         {
             _redirectUri = redirect_uri;
             return this;
@@ -74,13 +73,12 @@ namespace Autodesk.PlatformServices.Auth
         /// <para>Requires Redirect Uri to be filled</para>
         /// </summary>
         /// <returns>This <see cref="AuthRequestBuilder"/> instance</returns>
-        internal AuthRequestBuilder UseThreeLegged(AuthType type, string code)
+        public AuthRequestBuilder UseThreeLegged(AuthType type, string code)
         {
-            Resource = "authentication/v1/gettoken";
+            Resource = "authentication/v2/token";
             Method = Method.Post;
             Headers.Add("Content-Type", "application/x-www-form-urlencoded");
-            Parameters.Add(("client_id", _clientId, null));
-            Parameters.Add(("client_secret", _clientSecret, null));
+            Headers.Add("Authorization", $"Basic {GetEncodedClientIdAndClientSecret()}");
             Parameters.Add(("redirect_uri", _redirectUri, null));
             ParseAuthTypeToParameterAndAddCode(type, code);
             return this;
@@ -91,7 +89,7 @@ namespace Autodesk.PlatformServices.Auth
         /// </summary>
         /// <param name="token">The authorization token being used</param>
         /// <returns>This <see cref="AuthRequestBuilder"/> instance</returns>
-        internal AuthRequestBuilder UseGetMe(string token)
+        public AuthRequestBuilder UseGetMe(string token)
         {
             Resource = "userprofile/v1/users/@me";
             Method = Method.Get;
@@ -153,6 +151,11 @@ namespace Autodesk.PlatformServices.Auth
                     break;
             }
             Parameters.Add(("grant_type", grant, null));
+        }
+
+        private string GetEncodedClientIdAndClientSecret()
+        {
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_clientId}:{_clientSecret}"));
         }
     }
 }

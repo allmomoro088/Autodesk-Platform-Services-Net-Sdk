@@ -32,7 +32,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<List<Hub>>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -44,7 +44,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHubs();
@@ -63,7 +63,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<List<Hub>>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -75,7 +75,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHubs();
@@ -94,7 +94,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<List<Hub>>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -106,7 +106,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHubs();
@@ -125,7 +125,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<List<Hub>>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -137,13 +137,13 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHubs();
 
             //Assert
-            mockDmClient.Verify(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>()), Times.Once());
+            mockDmClient.Verify(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<List<Hub>>>>(), It.IsAny<Action<RestResponse>>()), Times.Once());
         }
 
         [Fact]
@@ -156,7 +156,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<List<Hub>>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -168,13 +168,13 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHubs();
 
             //Assert
-            mockDmClient.Verify(s => s.ExecuteDMApi<List<Hub>>(request), Times.Once());
+            mockDmClient.Verify(s => s.ExecuteDMApi<List<Hub>>(request, It.IsAny<Func<string, DMApiResponseBase<List<Hub>>>>(), It.IsAny<Action<RestResponse>>()), Times.Once());
         }
 
         [Fact]
@@ -187,7 +187,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<List<Hub>>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<List<Hub>>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -199,7 +199,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHubs();
@@ -223,7 +223,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Hub>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -235,7 +235,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHub(id);
@@ -255,7 +255,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Hub>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -267,7 +267,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHub(id);
@@ -287,7 +287,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Hub>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -299,7 +299,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHub(id);
@@ -319,7 +319,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Hub>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -331,13 +331,13 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHub(id);
 
             //Assert
-            mockDmClient.Verify(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>()), Times.Once());
+            mockDmClient.Verify(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Hub>>>(), It.IsAny<Action<RestResponse>>()), Times.Once());
         }
 
         [Fact]
@@ -351,7 +351,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Hub>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -363,13 +363,13 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHub(id);
 
             //Assert
-            mockDmClient.Verify(s => s.ExecuteDMApi<Hub>(request), Times.Once());
+            mockDmClient.Verify(s => s.ExecuteDMApi<Hub>(request, It.IsAny<Func<string, DMApiResponseBase<Hub>>>(), It.IsAny<Action<RestResponse>>()), Times.Once());
         }
 
         [Fact]
@@ -383,7 +383,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var mockAuthenticator = new Mock<Authenticator>(_correctCC, Scope.Account_Read, null, null);
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Hub>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Hub>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -395,7 +395,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(request);
 
-            var sut = new HubsApi(_correctCC, mockDmClient.Object, mockRequestBuilder.Object);
+            var sut = new HubsApi(mockDmClient.Object, mockRequestBuilder.Object);
 
             //Act
             var hubs = sut.GetHub(id);

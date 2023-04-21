@@ -48,7 +48,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetS3SignedDownloadUrls(bucketKey, objectKey);
@@ -83,7 +83,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetS3SignedDownloadUrls(bucketKey, objectKey);
@@ -119,7 +119,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetS3SignedDownloadUrls(bucketKey, objectKey);
@@ -159,7 +159,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetS3SignedUploadUrls(bucketKey, objectKey, bytes);
@@ -195,7 +195,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetS3SignedUploadUrls(bucketKey, objectKey, bytes);
@@ -231,7 +231,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetS3SignedUploadUrls(bucketKey, objectKey, bytes);
@@ -267,7 +267,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetS3SignedUploadUrls(bucketKey, objectKey, mb50);
@@ -305,7 +305,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetS3SignedUploadUrls(bucketKey, objectKey, mb500);
@@ -341,7 +341,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetS3SignedUploadUrls(bucketKey, objectKey, gb1);
@@ -377,7 +377,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new ObjectsApi(mockDMClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetS3SignedUploadUrls(bucketKey, objectKey, gb10);

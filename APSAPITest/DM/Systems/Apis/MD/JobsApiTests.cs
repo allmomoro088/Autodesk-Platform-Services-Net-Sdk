@@ -1,5 +1,4 @@
-﻿using APSAPITest.DM.Fixtures;
-using Autodesk.PlatformServices.Auth;
+﻿using Autodesk.PlatformServices.Auth;
 using Autodesk.PlatformServices.MD;
 using FluentAssertions;
 using Moq;
