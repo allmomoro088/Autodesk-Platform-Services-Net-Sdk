@@ -35,7 +35,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = ItemsFixtures.RightItem();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Item>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Item>>>(), It.IsAny<Action<RestResponse>>()))
@@ -70,7 +71,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = ItemsFixtures.RightItem();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Item>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Item>>>(), It.IsAny<Action<RestResponse>>()))
@@ -105,7 +107,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = ItemsFixtures.RightItem();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Item>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Item>>>(), It.IsAny<Action<RestResponse>>()))
@@ -139,7 +142,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = ItemsFixtures.RightItem();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Item>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Item>>>(), It.IsAny<Action<RestResponse>>()))
@@ -178,7 +182,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = VersionsFixtures.RightVersion();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Version>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Version>>>(), It.IsAny<Action<RestResponse>>()))
@@ -213,7 +218,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = VersionsFixtures.RightVersion();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Version>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Version>>>(), It.IsAny<Action<RestResponse>>()))
@@ -248,7 +254,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = VersionsFixtures.RightVersion();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Version>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Version>>>(), It.IsAny<Action<RestResponse>>()))
@@ -282,7 +289,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = VersionsFixtures.RightVersion();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Version>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Version>>>(), It.IsAny<Action<RestResponse>>()))
@@ -325,7 +333,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.PostRequest();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Item>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Item>>>(), It.IsAny<Action<RestResponse>>()))
@@ -371,7 +380,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.PostRequest();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Item>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Item>>>(), It.IsAny<Action<RestResponse>>()))
@@ -417,7 +427,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.PostRequest();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Item>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Item>>>(), It.IsAny<Action<RestResponse>>()))
@@ -462,7 +473,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.PostRequest();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Item>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Item>>>(), It.IsAny<Action<RestResponse>>()))
@@ -508,7 +520,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.PostRequest();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Item>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Item>>>(), It.IsAny<Action<RestResponse>>()))
@@ -553,7 +566,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.PostRequest();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.ExecuteDMApi<Item>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Item>>>(), It.IsAny<Action<RestResponse>>()))

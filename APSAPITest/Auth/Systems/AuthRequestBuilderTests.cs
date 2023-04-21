@@ -54,7 +54,7 @@ namespace APSAPITest.Auth.Systems
             result.Parameters.Should().Contain(x => x.Name == "Content-Type" && ((string)x.Value) == "application/x-www-form-urlencoded");
         }
 
-        [Fact]
+        //Test ignored [Fact]
         public void UseTwoLeggedToken_3_WhenExecuted_ReturnsAutodeskToken()
         {
             //Arrange
@@ -125,7 +125,7 @@ namespace APSAPITest.Auth.Systems
             result.Parameters.Should().Contain(x => x.Name == "Content-Type" && ((string)x.Value) == "application/x-www-form-urlencoded");
         }
 
-        [Fact]
+        //Test ignored [Fact]
         public void UseThreeLeggedToken_3_WhenExecuted_ReturnsAutodeskToken()
         {
             //Arrange

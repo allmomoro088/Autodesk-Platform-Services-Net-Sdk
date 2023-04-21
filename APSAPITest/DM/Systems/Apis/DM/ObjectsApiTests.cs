@@ -32,8 +32,9 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = ObjectsFixtures.RightDownloadUrls();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthentication = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Write | Scope.Data_Create, null, null);
-            var mockDMClient = new Mock<DMClient>(mockAuthentication.Object);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
+            var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<S3SignedDownloadUrls>(It.IsAny<RestRequest>(), It.IsAny<Func<string, S3SignedDownloadUrls>>(), null))
                 .Returns(model);
@@ -67,8 +68,9 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = ObjectsFixtures.RightDownloadUrls();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthentication = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Write | Scope.Data_Create, null, null);
-            var mockDMClient = new Mock<DMClient>(mockAuthentication.Object);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
+            var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<S3SignedDownloadUrls>(It.IsAny<RestRequest>(), It.IsAny<Func<string, S3SignedDownloadUrls>>(), null))
                 .Returns(model);
@@ -103,8 +105,9 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = ObjectsFixtures.RightDownloadUrls();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthentication = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Write | Scope.Data_Create, null, null);
-            var mockDMClient = new Mock<DMClient>(mockAuthentication.Object);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
+            var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<S3SignedDownloadUrls>(It.IsAny<RestRequest>(), It.IsAny<Func<string, S3SignedDownloadUrls>>(), null))
                 .Returns(model);
@@ -143,8 +146,9 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.GetRequest();
             var bytes = ObjectsFixtures.MB2();
 
-            var mockAuthentication = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Write | Scope.Data_Create, null, null);
-            var mockDMClient = new Mock<DMClient>(mockAuthentication.Object);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
+            var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<S3SignedUploadUrls>(It.IsAny<RestRequest>()))
                 .Returns(model);
@@ -179,8 +183,9 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.GetRequest();
             var bytes = ObjectsFixtures.MB2();
 
-            var mockAuthentication = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Write | Scope.Data_Create, null, null);
-            var mockDMClient = new Mock<DMClient>(mockAuthentication.Object);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
+            var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<S3SignedUploadUrls>(It.IsAny<RestRequest>()))
                 .Returns(model);
@@ -215,8 +220,9 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.GetRequest();
             var bytes = ObjectsFixtures.MB2();
 
-            var mockAuthentication = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Write | Scope.Data_Create, null, null);
-            var mockDMClient = new Mock<DMClient>(mockAuthentication.Object);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
+            var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<S3SignedUploadUrls>(It.IsAny<RestRequest>()))
                 .Returns(model);
@@ -251,8 +257,9 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.GetRequest();
             var mb50 = ObjectsFixtures.MB50();
 
-            var mockAuthentication = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Write | Scope.Data_Create, null, null);
-            var mockDMClient = new Mock<DMClient>(mockAuthentication.Object);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
+            var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<S3SignedUploadUrls>(It.IsAny<RestRequest>()))
                 .Returns(model);
@@ -289,8 +296,9 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var gb1 = ObjectsFixtures.GB1();
             var gb10 = ObjectsFixtures.GB10();
 
-            var mockAuthentication = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Write | Scope.Data_Create, null, null);
-            var mockDMClient = new Mock<DMClient>(mockAuthentication.Object);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
+            var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<S3SignedUploadUrls>(It.IsAny<RestRequest>()))
                 .Returns(model);
@@ -325,8 +333,9 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.GetRequest();
             var gb1 = ObjectsFixtures.GB1();
 
-            var mockAuthentication = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Write | Scope.Data_Create, null, null);
-            var mockDMClient = new Mock<DMClient>(mockAuthentication.Object);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
+            var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<S3SignedUploadUrls>(It.IsAny<RestRequest>()))
                 .Returns(model);
@@ -361,8 +370,9 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var request = RestSharpFixtures.GetRequest();
             var gb10 = ObjectsFixtures.GB10();
 
-            var mockAuthentication = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Write | Scope.Data_Create, null, null);
-            var mockDMClient = new Mock<DMClient>(mockAuthentication.Object);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
+            var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<S3SignedUploadUrls>(It.IsAny<RestRequest>()))
                 .Returns(model);

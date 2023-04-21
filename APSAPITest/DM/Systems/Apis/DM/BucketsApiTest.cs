@@ -33,7 +33,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.RightBucketList();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<BucketList>(It.IsAny<RestRequest>()))
@@ -69,7 +70,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.RightBucketList();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<BucketList>(It.IsAny<RestRequest>()))
@@ -105,7 +107,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.RightBucketList();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<BucketList>(It.IsAny<RestRequest>()))
@@ -141,7 +144,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.RightBucketList();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<BucketList>(It.IsAny<RestRequest>()))
@@ -178,7 +182,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.RightBucketList();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<BucketList>(It.IsAny<RestRequest>()))
@@ -228,7 +233,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.BucketRight();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<Bucket>(It.IsAny<RestRequest>()))
@@ -271,7 +277,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.BucketRight();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<Bucket>(It.IsAny<RestRequest>()))
@@ -315,7 +322,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.BucketRight();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<Bucket>(It.IsAny<RestRequest>()))
@@ -358,7 +366,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.BucketRight();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<Bucket>(It.IsAny<RestRequest>()))
@@ -402,7 +411,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.BucketRight();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<Bucket>(It.IsAny<RestRequest>()))
@@ -446,7 +456,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.BucketRight();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<Bucket>(It.IsAny<RestRequest>()))
@@ -489,7 +500,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = BucketsFixtures.BucketRight();
             var data = "data";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute<Bucket>(It.IsAny<RestRequest>()))
@@ -534,7 +546,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var policyKey = BucketPolicyKey.Transient;
             var request = RestSharpFixtures.DeleteRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute(It.IsAny<RestRequest>(), null))
@@ -568,7 +581,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var policyKey = BucketPolicyKey.Transient;
             var request = RestSharpFixtures.DeleteRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute(It.IsAny<RestRequest>(), null))
@@ -601,7 +615,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var bucketKey = BucketsFixtures.RightBucketKey();
             var request = RestSharpFixtures.DeleteRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Bucket_Read | Scope.Bucket_Create | Scope.Bucket_Update | Scope.Bucket_Delete, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDMClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDMClient
                 .Setup(s => s.Execute(It.IsAny<RestRequest>(), null))
