@@ -981,7 +981,7 @@ namespace APSAPITest.DM.Systems.RequestBuilders
 
             //Assert
             result.Parameters.Count.Should().NotBe(0);
-            result.Parameters.Should().Contain(x => x.Name == "content-type" && x.Value.ToString() == "application/json" && x.Type == ParameterType.HttpHeader);
+            result.Parameters.Should().Contain(x => x.Name == "content-type" && x.Value.ToString() == "application/vnd.api+json" && x.Type == ParameterType.HttpHeader);
         }
 
         [Fact]

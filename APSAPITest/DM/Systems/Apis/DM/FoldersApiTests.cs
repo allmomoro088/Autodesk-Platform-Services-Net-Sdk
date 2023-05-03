@@ -36,10 +36,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightFolder();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -53,7 +54,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetFolder(projectId, folderId);
@@ -72,10 +73,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightFolder();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -89,7 +91,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetFolder(projectId, folderId);
@@ -108,10 +110,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightFolder();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -125,7 +128,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetFolder(projectId, folderId);
@@ -144,10 +147,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightFolder();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -161,13 +165,13 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetFolder(projectId, folderId);
 
             //Assert
-            mockDmClient.Verify(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()), Times.Once());
+            mockDmClient.Verify(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()), Times.Once());
         }
 
         [Fact]
@@ -180,10 +184,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightFolder();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -197,13 +202,13 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetFolder(projectId, folderId);
 
             //Assert
-            mockDmClient.Verify(s => s.ExecuteDMApi<Folder>(request), Times.Once());
+            mockDmClient.Verify(s => s.ExecuteDMApi<Folder>(request, It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()), Times.Once());
         }
 
         [Fact]
@@ -216,10 +221,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightFolder();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -233,7 +239,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetFolder(projectId, folderId);
@@ -251,10 +257,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightFolder();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -268,7 +275,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetFolder(projectId, folderId);
@@ -291,7 +298,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightContents();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
                 .Setup(s => s.Execute<Contents, Folder, Item, Version>(It.IsAny<RestRequest>()))
@@ -308,7 +316,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetContents(projectId, folderId);
@@ -327,7 +335,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightContents();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
                 .Setup(s => s.Execute<Contents, Folder, Item, Version>(It.IsAny<RestRequest>()))
@@ -344,7 +353,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetContents(projectId, folderId);
@@ -364,7 +373,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightContents();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
                 .Setup(s => s.Execute<Contents, Folder, Item, Version>(It.IsAny<RestRequest>()))
@@ -381,7 +391,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetContents(projectId, folderId);
@@ -400,7 +410,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightContents();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
                 .Setup(s => s.Execute<Contents, Folder, Item, Version>(It.IsAny<RestRequest>()))
@@ -417,7 +428,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetContents(projectId, folderId);
@@ -437,7 +448,8 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var model = FoldersFixtures.RightContents();
             var request = RestSharpFixtures.GetRequest();
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
                 .Setup(s => s.Execute<Contents, Folder, Item, Version>(It.IsAny<RestRequest>()))
@@ -454,7 +466,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
 
             var mockDataBuilder = new Mock<DMDataBuilder>();
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.GetContents(projectId, folderId);
@@ -479,10 +491,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var folderName = FoldersFixtures.RightFolderName();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -503,7 +516,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(data);
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.PostFolder(projectId, folderName, folderId);
@@ -525,10 +538,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var folderName = FoldersFixtures.RightFolderName();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -549,7 +563,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(data);
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.PostFolder(projectId, folderName, folderId);
@@ -571,10 +585,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var folderName = FoldersFixtures.RightFolderName();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -595,7 +610,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(data);
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.PostFolder(projectId, folderName, folderId);
@@ -616,10 +631,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var folderName = FoldersFixtures.RightFolderName();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -640,7 +656,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(data);
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.PostFolder(projectId, folderName, folderId);
@@ -662,10 +678,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var folderName = FoldersFixtures.RightFolderName();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -686,7 +703,7 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(data);
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.PostFolder(projectId, folderName, folderId);
@@ -707,10 +724,11 @@ namespace APSAPITest.DM.Systems.Apis.DM
             var folderName = FoldersFixtures.RightFolderName();
             var data = "\"data\": \"this is some data\"";
 
-            var mockAuthenticator = new Mock<Authenticator>(_cc, Scope.Data_Read | Scope.Data_Create | Scope.Data_Write, null, null);
+            var mockAuthClient = new Mock<AuthClient>();
+            var mockAuthenticator = new Mock<Authenticator>(_cc, mockAuthClient.Object, It.IsAny<IScope>(), It.IsAny<I2LOStorage>(), It.IsAny<I3LOStorage>());
             var mockDmClient = new Mock<DMClient>(mockAuthenticator.Object);
             mockDmClient
-                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()))
+                .Setup(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()))
                 .Returns(model);
 
             var mockRequestBuilder = new Mock<DMRequestBuilder>();
@@ -731,14 +749,14 @@ namespace APSAPITest.DM.Systems.Apis.DM
                 .Setup(s => s.Build())
                 .Returns(data);
 
-            var sut = new FoldersApi(_cc, mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object, accountId);
+            var sut = new FoldersApi(mockDmClient.Object, mockRequestBuilder.Object, mockDataBuilder.Object);
 
             //Act
             var result = sut.PostFolder(projectId, folderName, folderId);
 
             //Assert
-            mockDmClient.Verify(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>()), Times.Once());
-            mockDmClient.Verify(s => s.ExecuteDMApi<Folder>(request), Times.Once());
+            mockDmClient.Verify(s => s.ExecuteDMApi<Folder>(It.IsAny<RestRequest>(), It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()), Times.Once());
+            mockDmClient.Verify(s => s.ExecuteDMApi<Folder>(request, It.IsAny<Func<string, DMApiResponseBase<Folder>>>(), It.IsAny<Action<RestResponse>>()), Times.Once());
         }
 
         #endregion

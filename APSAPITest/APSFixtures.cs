@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APSAPITest.DM.Fixtures
+namespace APSAPITest
 {
     internal static class APSFixtures
     {
@@ -13,5 +13,8 @@ namespace APSAPITest.DM.Fixtures
 
         internal static string RightClientSecret() =>
             "CLIENT_SECRET";
+
+        internal static string RightRedictUri() =>
+            "http://localhost:8080/";
     }
 }

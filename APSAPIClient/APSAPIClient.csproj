@@ -8,8 +8,8 @@
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>AutodeskPlatformServices.Core</Title>
-    <AssemblyVersion>0.1.1</AssemblyVersion>
-    <Version>0.1.1</Version>
+    <AssemblyVersion>0.1.2</AssemblyVersion>
+    <Version>0.1.2</Version>
     <Authors>AllanMoraes</Authors>
     <Description>A strong typed SDK for Autodesk Platform Services
 Use major Autodesk Platform Services Data Management API endpoints with this package

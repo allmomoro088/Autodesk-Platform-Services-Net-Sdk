@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Autodesk.PlatformServices.Auth.Abstractions
+namespace Autodesk.PlatformServices.Auth
 {
     /// <summary>
     /// The implementation for IScope

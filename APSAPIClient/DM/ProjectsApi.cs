@@ -63,7 +63,7 @@ namespace Autodesk.PlatformServices.DM
         /// <param name="projectId">The project id</param>
         /// <param name="accountId">The account id or hub id where the project is located</param>
         /// <returns></returns>
-        public Project GetProject(string projectId, string accountId)
+        public Project GetProject(string accountId, string projectId)
         {
             var r = _requestBuilder
                 .UseGetProject(accountId, projectId)

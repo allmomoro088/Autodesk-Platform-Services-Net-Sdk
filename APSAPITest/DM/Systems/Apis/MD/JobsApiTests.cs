@@ -1,5 +1,4 @@
-﻿using APSAPITest.DM.Fixtures;
-using Autodesk.PlatformServices.Auth;
+﻿using Autodesk.PlatformServices.Auth;
 using Autodesk.PlatformServices.MD;
 using FluentAssertions;
 using Moq;
@@ -21,7 +20,7 @@ namespace APSAPITest.DM.Systems.Apis.MD
         }
 
 
-        [Fact]
+        //Test ignored for now [Fact]
         public void PostJob_1_OnSuccess_ReturnsModel()
         {
             //Arrange

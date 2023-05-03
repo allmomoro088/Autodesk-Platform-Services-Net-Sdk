@@ -133,16 +133,14 @@ namespace Autodesk.PlatformServices.DM
                             .UseGetS3SignedUploadUrls(bucketKey, objectKey, uploadKey, currentPart, parts, MinutesExpiration)
                             .Build();
                     }
-                    if (urls.Urls.Count == 0)
-                        urls = Client.Execute<S3SignedUploadUrls>(r);
-                    else
+                    var responseUrls = Client.Execute<S3SignedUploadUrls>(r);
+                    foreach (string url in responseUrls.Urls)
                     {
-                        var responseUrls = Client.Execute<S3SignedUploadUrls>(r);
-                        urls.Urls.AddRange(responseUrls.Urls);
-                        urls.UrlsExpiration = responseUrls.UrlsExpiration;
-                        urls.UploadExpiration = responseUrls.UploadExpiration;
-                        urls.UploadKey = responseUrls.UploadKey;
+                        urls.Urls.Add(url);
                     }
+                    urls.UrlsExpiration = responseUrls.UrlsExpiration;
+                    urls.UploadExpiration = responseUrls.UploadExpiration;
+                    urls.UploadKey = responseUrls.UploadKey;
                     currentPart += parts;
                 }
                 return urls;
