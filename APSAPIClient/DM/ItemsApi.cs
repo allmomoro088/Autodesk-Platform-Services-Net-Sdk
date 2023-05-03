@@ -30,7 +30,6 @@ namespace Autodesk.PlatformServices.DM
         /// <summary>
         /// Creates an instance of <see cref="ItemsApi"/>. Mainly used by Dependency Injection
         /// </summary>
-        /// <param name="cc">Client Credentials used to authenticate</param>
         /// <param name="client">The DM Client to be used on executing requests</param>
         /// <param name="requestBuilder"></param>
         /// <param name="dataBuilder"></param>

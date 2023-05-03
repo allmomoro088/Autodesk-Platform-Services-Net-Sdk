@@ -73,10 +73,36 @@ namespace Autodesk.PlatformServices.DependencyInjection
                 .AddTransient<DMDataBuilder>()
                 .AddTransient<DMRequestBuilder>()
                 .AddTransient<DMClient>()
-                .AddTransient<HubsApi>()
-                .AddTransient<ProjectsApi>()
-                .AddTransient<FoldersApi>()
-                .AddTransient<ItemsApi>()
+                .AddTransient<HubsApi>(s =>
+                {
+                    var c = s.GetRequiredService<DMClient>();
+                    var r = s.GetRequiredService<DMRequestBuilder>();
+                    return new HubsApi(c, r);
+                })
+                .AddTransient<ProjectsApi>(s =>
+                {
+                    var c = s.GetRequiredService<DMClient>();
+                    var r = s.GetRequiredService<DMRequestBuilder>();
+                    var d = s.GetRequiredService<DMDataBuilder>();
+
+                    return new ProjectsApi(c, r, d);
+                })
+                .AddTransient<FoldersApi>(s =>
+                {
+                    var c = s.GetRequiredService<DMClient>();
+                    var r = s.GetRequiredService<DMRequestBuilder>();
+                    var d = s.GetRequiredService<DMDataBuilder>();
+
+                    return new FoldersApi(c, r, d);
+                })
+                .AddTransient<ItemsApi>(s =>
+                {
+                    var c = s.GetRequiredService<DMClient>();
+                    var r = s.GetRequiredService<DMRequestBuilder>();
+                    var d = s.GetRequiredService<DMDataBuilder>();
+                    
+                    return new ItemsApi(c, r, d);
+                })
                 .AddTransient<BucketsApi>(s =>
                 {
                     var c = s.GetRequiredService<DMClient>();
