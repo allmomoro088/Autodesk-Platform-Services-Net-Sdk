@@ -125,7 +125,7 @@ namespace Autodesk.PlatformServices.DependencyInjection
         }
 
         /// <summary>
-        /// Reads the ClientCredentials from <see cref="IConfiguration"/>
+        /// Reads the ClientCredentials from <see cref="IConfiguration"/>. Property names are APS:ClientId, APS:ClientSecret, APS:RedirectUri
         /// </summary>
         /// <param name="configuration">This</param>
         /// <returns>The <see cref="ClientCredentials"/> instance matching the credentials found in <see cref="IConfiguration"/></returns>
@@ -135,6 +135,18 @@ namespace Autodesk.PlatformServices.DependencyInjection
                     configuration["APS:ClientId"],
                     configuration["APS:ClientSecret"],
                     configuration["APS:RedirectUri"]);
+        }
+
+        /// <summary>
+        /// Reads the ClientCredentials from <see cref="Environment"/> variables. Variables names are APS_ClientId, APS_ClientSecret, APS_RedirectUri
+        /// </summary>
+        /// <returns>The <see cref="ClientCredentials"/> instance matching the credentials found in <see cref="Environment"/> variables</returns>
+        public static ClientCredentials GetAPSClientCredentials()
+        {
+            return new ClientCredentials(
+                Environment.GetEnvironmentVariable("APS_ClientId"),
+                Environment.GetEnvironmentVariable("APS_ClientSecret"),
+                Environment.GetEnvironmentVariable("APS_RedirectUri"));
         }
 
         /// <summary>

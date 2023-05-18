@@ -8,8 +8,8 @@
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>AutodeskPlatformServices.Core</Title>
-    <AssemblyVersion>0.1.2</AssemblyVersion>
-    <Version>0.1.2</Version>
+    <AssemblyVersion>0.1.3</AssemblyVersion>
+    <Version>0.1.3</Version>
     <Authors>AllanMoraes</Authors>
     <Description>A strong typed SDK for Autodesk Platform Services
 Use major Autodesk Platform Services Data Management API endpoints with this package
@@ -18,7 +18,7 @@ Model Derivative and BIM360 to be released soon.</Description>
     <PackageIcon>adsklogo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>autodesk;aps;autodeskplatformservices;adsk</PackageTags>
-    <PackageReleaseNotes>Fixed constructors for Dependency Injection taht where requiring unused parameters
+    <PackageReleaseNotes>Fixed constructors for Dependency Injection that where requiring unused parameters
 
 Model Derivative and BIM360 are still a WIP, shouldn't be used yet</PackageReleaseNotes>
     <IncludeSymbols>True</IncludeSymbols>
@@ -35,15 +35,15 @@ Model Derivative and BIM360 are still a WIP, shouldn't be used yet</PackageRelea
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\adsklogo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
     <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="C:\Users\Allan Moraes\Desktop\adsklogo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
